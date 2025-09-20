@@ -1,50 +1,53 @@
-// Configuração do Firebase (copie do seu Console > Configurações do app > SDKs)
+// script.js
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+import { getDatabase, ref, onValue, update } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-database.js";
+
+// Config do Firebase
 const firebaseConfig = {
-    apiKey: "AIzaSyBP_jRcJHatCanPVrJzr-W4QQRp7glkCkA",
-    authDomain: "lista-de-itens-f4a54.firebaseapp.com",
-    databaseURL: "https://lista-de-itens-f4a54-default-rtdb.firebaseio.com",
-    projectId: "lista-de-itens-f4a54",
-    storageBucket: "lista-de-itens-f4a54.firebasestorage.app",
-    messagingSenderId: "874165125234",
-    appId: "1:874165125234:web:edd86588bf738042cb82eb",
-    measurementId: "G-PJFQY3TMTX"
-  };
+  apiKey: "AIzaSyBP_jRcJHatCanPVrJzr-W4QQRp7glkCkA",
+  authDomain: "lista-de-itens-f4a54.firebaseapp.com",
+  databaseURL: "https://lista-de-itens-f4a54-default-rtdb.firebaseio.com",
+  projectId: "lista-de-itens-f4a54",
+  storageBucket: "lista-de-itens-f4a54.firebasestorage.app",
+  messagingSenderId: "874165125234",
+  appId: "1:874165125234:web:edd86588bf738042cb82eb",
+  measurementId: "G-PJFQY3TMTX"
+};
 
-// Inicializa o Firebase
-firebase.initializeApp(firebaseConfig);
-const db = firebase.database();
+// Inicializa Firebase
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
 
-// Referência à lista no Firebase
-const listaRef = db.ref("presents");
+// Referência da lista de presentes
+const listaRef = ref(db, "presentes");
 
-// Renderiza lista
-listaRef.on("value", (snapshot) => {
-  const lista = document.getElementById("lista-presentes");
-  lista.innerHTML = ""; // limpa antes de recriar
+const lista = document.getElementById("list");
+const template = document.getElementById("item-template");
 
-  snapshot.forEach((child) => {
+// Preenche a lista no HTML
+onValue(listaRef, snapshot => {
+  lista.innerHTML = "";
+
+  snapshot.forEach((child, index) => {
     const item = child.val();
     const id = child.key;
 
-    // Cria elementos
-    const li = document.createElement("li");
-    const checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
+    // Clona o template
+    const li = template.content.cloneNode(true);
+    li.querySelector('.nome').textContent = item.nome;
+    const checkbox = li.querySelector('.checkbox');
     checkbox.checked = item.escolhido;
-    checkbox.disabled = item.escolhido; // desabilita se já escolhido
+    checkbox.disabled = item.escolhido;
 
-    const label = document.createElement("label");
-    label.textContent = item.nome;
+    // Aplica estilos por índice ou condição
+    li.querySelector('li').style.backgroundColor = index % 2 === 0 ? "#f9f9f9" : "#e0e0e0";
 
-    // Evento de clique
+    // Evento checkbox
     checkbox.addEventListener("change", () => {
-      if (checkbox.checked) {
-        db.ref("presents/" + id).update({ escolhido: true });
-      }
+      update(ref(db, "presentes/" + id), { escolhido: true });
+      checkbox.disabled = true;
     });
 
-    li.appendChild(checkbox);
-    li.appendChild(label);
     lista.appendChild(li);
   });
 });

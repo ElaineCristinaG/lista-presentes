@@ -1,0 +1,28 @@
+/* style.css */
+ul#list {
+  list-style: none;
+  padding: 0;
+}
+
+ul#list li {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+ul#list li:nth-child(even) { 
+  background-color: #f9f9f9;
+}
+
+h1{
+  color: rgb(86, 86, 252);
+  text-align: center;
+}
+
+h3 {
+  color:rgb(86, 86, 252);
+  font-family: "Edu NSW ACT Cursive", cursive;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  text-align: center;
+}
