@@ -40,7 +40,7 @@ onValue(listaRef, snapshot => {
     checkbox.disabled = item.escolhido;
 
     // Aplica estilos por índice ou condição
-    li.querySelector('li').style.backgroundColor = index % 2 === 0 ? "#f9f9f9" : "#e0e0e0";
+    li.querySelector('.nome').style.color = item.escolhido ? "#b6b8bdff" : "#0754e4ff";
 
     // Evento checkbox
     checkbox.addEventListener("change", () => {
