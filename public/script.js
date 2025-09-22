@@ -1,6 +1,10 @@
 // script.js
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
-import { getDatabase, ref, onValue, update } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-database.js";
+//import { getDatabase, ref, onValue, update } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-database.js";
+import { 
+  getDatabase, ref, onValue, update, get 
+} from "https://www.gstatic.com/firebasejs/12.3.0/firebase-database.js";
+
 
 // Config do Firebase
 const firebaseConfig = {
@@ -51,3 +55,22 @@ onValue(listaRef, snapshot => {
     lista.appendChild(li);
   });
 });
+
+
+
+// 🔹 Função para resetar todos os presentes
+async function resetarPresentes() {
+  try {
+    const snapshot = await get(listaRef);
+    snapshot.forEach(child => {
+      const id = child.key;
+      update(ref(db, "presentes/" + id), { escolhido: false });
+    });
+  } catch (error) {
+    console.error("Erro ao resetar presentes:", error);
+  }
+}
+
+
+
+document.getElementById("reset-button").addEventListener("click", resetarPresentes);
