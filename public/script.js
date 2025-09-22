@@ -27,34 +27,119 @@ const listaRef = ref(db, "presentes");
 
 const lista = document.getElementById("list");
 const template = document.getElementById("item-template");
+const btnSalvar = document.getElementById("add-button");
+const inputNome = document.getElementById("nomeInput"); 
+let presenteSelecionadoId = null;
+
 
 // Preenche a lista no HTML
+// onValue(listaRef, snapshot => {
+//   lista.innerHTML = "";
+
+//   snapshot.forEach((child, index) => {
+//     const item = child.val();
+//     const id = child.key;
+
+//     // Clona o template
+//     const li = template.content.cloneNode(true);
+//     li.querySelector('.nome').textContent = item.nome;
+//     const checkbox = li.querySelector('.checkbox');
+//     checkbox.checked = item.escolhido;
+//     checkbox.disabled = item.escolhido;
+
+//     // Aplica estilos por índice ou condição
+//     li.querySelector('.nome').style.color = item.escolhido ? "#b6b8bdff" : "#0754e4ff";
+
+//     // Evento checkbox
+//     checkbox.addEventListener("change", () => {
+//       update(ref(db, "presentes/" + id), { escolhido: true });
+//       checkbox.disabled = true;
+
+//     });
+
+//     lista.appendChild(li);
+//   });
+// });
+
 onValue(listaRef, snapshot => {
   lista.innerHTML = "";
 
-  snapshot.forEach((child, index) => {
+  snapshot.forEach((child) => {
     const item = child.val();
     const id = child.key;
+
+    // Só exibe se não foi escolhido
+    if (item.escolhido) return;
 
     // Clona o template
     const li = template.content.cloneNode(true);
     li.querySelector('.nome').textContent = item.nome;
     const checkbox = li.querySelector('.checkbox');
-    checkbox.checked = item.escolhido;
-    checkbox.disabled = item.escolhido;
+    checkbox.checked = false;
+    checkbox.disabled = false;
 
-    // Aplica estilos por índice ou condição
-    li.querySelector('.nome').style.color = item.escolhido ? "#b6b8bdff" : "#0754e4ff";
+    // Aplica estilos
+    li.querySelector('.nome').style.color = "#0754e4ff";
+   
 
-    // Evento checkbox
-    checkbox.addEventListener("change", () => {
-      update(ref(db, "presentes/" + id), { escolhido: true });
-      checkbox.disabled = true;
+
+  checkbox.addEventListener("change", () => {
+  // Desmarca qualquer outro checkbox selecionado
+  document.querySelectorAll(".checkbox").forEach(cb => {
+    const nomeEl = cb.closest("li")?.querySelector(".nome");
+
+    if (cb !== checkbox) {
+      cb.checked = false;
+      if (nomeEl) nomeEl.style.fontWeight = "normal"; // remove bold dos outros
+    } else {
+      if (nomeEl) {
+        nomeEl.style.fontWeight = cb.checked ? "bold" : "normal"; // bold só no selecionado
+      }
+    }
+  });
+
+      // Salva o id do presente selecionado
+      presenteSelecionadoId = checkbox.checked ? id : null;
     });
 
     lista.appendChild(li);
   });
 });
+
+
+// 🔹 Função para salvar presente selecionado
+async function salvarPresente() {
+  const nome = inputNome.value.trim();
+
+  if (!nome) {
+    alert("Digite seu nome antes de salvar!");
+    return;
+  }
+
+  if (!presenteSelecionadoId) {
+    alert("Selecione um presente antes de salvar!");
+    return;
+  }
+
+  try {
+    await update(ref(db, "presentes/" + presenteSelecionadoId), { 
+      escolhido: true,
+      pessoa: nome
+    });
+
+    // Limpa input e seleção
+    inputNome.value = "";
+    presenteSelecionadoId = null;
+
+    alert("Presente reservado com sucesso!");
+  } catch (error) {
+    console.error("Erro ao salvar presente:", error);
+  }
+}
+
+// 🔹 Evento do botão salvar
+btnSalvar.addEventListener("click", salvarPresente);
+
 
 
 
@@ -64,7 +149,7 @@ async function resetarPresentes() {
     const snapshot = await get(listaRef);
     snapshot.forEach(child => {
       const id = child.key;
-      update(ref(db, "presentes/" + id), { escolhido: false });
+      update(ref(db, "presentes/" + id), { escolhido: false, pessoa: ""});
     });
   } catch (error) {
     console.error("Erro ao resetar presentes:", error);
@@ -74,3 +159,6 @@ async function resetarPresentes() {
 
 
 document.getElementById("reset-button").addEventListener("click", resetarPresentes);
+
+
+
