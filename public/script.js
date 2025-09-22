@@ -28,39 +28,10 @@ const listaRef = ref(db, "presentes");
 const lista = document.getElementById("list");
 const template = document.getElementById("item-template");
 const btnSalvar = document.getElementById("add-button");
-const inputNome = document.getElementById("nomeInput"); 
+const inputNome = document.getElementById("pessoa"); 
 let presenteSelecionadoId = null;
 
-
-// Preenche a lista no HTML
-// onValue(listaRef, snapshot => {
-//   lista.innerHTML = "";
-
-//   snapshot.forEach((child, index) => {
-//     const item = child.val();
-//     const id = child.key;
-
-//     // Clona o template
-//     const li = template.content.cloneNode(true);
-//     li.querySelector('.nome').textContent = item.nome;
-//     const checkbox = li.querySelector('.checkbox');
-//     checkbox.checked = item.escolhido;
-//     checkbox.disabled = item.escolhido;
-
-//     // Aplica estilos por índice ou condição
-//     li.querySelector('.nome').style.color = item.escolhido ? "#b6b8bdff" : "#0754e4ff";
-
-//     // Evento checkbox
-//     checkbox.addEventListener("change", () => {
-//       update(ref(db, "presentes/" + id), { escolhido: true });
-//       checkbox.disabled = true;
-
-//     });
-
-//     lista.appendChild(li);
-//   });
-// });
-
+// 🔹 Monitora mudanças na lista de presentes
 onValue(listaRef, snapshot => {
   lista.innerHTML = "";
 
@@ -82,7 +53,6 @@ onValue(listaRef, snapshot => {
     li.querySelector('.nome').style.color = "#0754e4ff";
    
 
-
   checkbox.addEventListener("change", () => {
   // Desmarca qualquer outro checkbox selecionado
   document.querySelectorAll(".checkbox").forEach(cb => {
@@ -100,6 +70,7 @@ onValue(listaRef, snapshot => {
 
       // Salva o id do presente selecionado
       presenteSelecionadoId = checkbox.checked ? id : null;
+      console.log("Presente selecionado ID:", presenteSelecionadoId);
     });
 
     lista.appendChild(li);
@@ -109,9 +80,10 @@ onValue(listaRef, snapshot => {
 
 // 🔹 Função para salvar presente selecionado
 async function salvarPresente() {
-  const nome = inputNome.value.trim();
+  console.log("pessoa:", inputNome.value);
+  const nomee = inputNome.value.trim();
 
-  if (!nome) {
+  if (!nomee) {
     alert("Digite seu nome antes de salvar!");
     return;
   }
@@ -124,7 +96,7 @@ async function salvarPresente() {
   try {
     await update(ref(db, "presentes/" + presenteSelecionadoId), { 
       escolhido: true,
-      pessoa: nome
+      pessoa: nomee
     });
 
     // Limpa input e seleção
@@ -139,8 +111,6 @@ async function salvarPresente() {
 
 // 🔹 Evento do botão salvar
 btnSalvar.addEventListener("click", salvarPresente);
-
-
 
 
 // 🔹 Função para resetar todos os presentes
