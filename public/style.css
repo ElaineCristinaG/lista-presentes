@@ -91,8 +91,10 @@ footer{
   color: #42035f;
   display: flex;  
   justify-content: center;
+  flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
+  padding: 10px 0px;
 }
 footer span{
   font-size: 15px;
@@ -101,4 +103,8 @@ footer span{
 }
 footer svg path{
   fill: #42035f;
+}
+.redes-sociais{
+  display: flex;
+  gap: 20px;
 }
