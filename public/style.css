@@ -147,7 +147,7 @@ footer svg path{
 .fundo {
   width: 100vw;
   height: 100px;
-  background-image: url('/public/assets/flor3.jpg');
+  background-image: url('/public/assets//back.jpg');
   background-size: cover;      /* cobre todo o elemento */
   background-position: center; /* centraliza a imagem */
    
