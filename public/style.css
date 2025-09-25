@@ -55,17 +55,18 @@ font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
 h1 {
   color:rgb(239, 239, 243);
-  /* color:rgb(2, 2, 78); */
+  /* color:rgb(2, 2, 78);  */
   font-optical-sizing: auto;
   font-weight: 700;
   font-style: normal;
   text-align: center;
 }
 
-span{
+.textFooter{
   font-size: 20px;
-  color: rgb(53, 54, 56);
+  color: white;
   font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
 }
 
 
@@ -77,6 +78,7 @@ header{
   height: 100px;
   position: fixed;
   top: 0;
+  background-color:rgb(38, 101, 173);
   
 }
 .input-container{
@@ -107,12 +109,11 @@ header{
 }
 
 footer{
-  background-color:rgba(189, 218, 252, 0.61);
+  background-color:rgb(38, 101, 173);
   width: 100vw;
   height: 70px;
   text-align: center;   
   font-size: 12px;
-  color: #42035f;
   display: flex;  
   justify-content: center;
   flex-direction: column;
@@ -122,13 +123,9 @@ footer{
   position: fixed;
   bottom: 0;
 }
-footer span{
-  font-size: 15px;
-  color: #42035f;
 
-}
 footer svg path{
-  fill: #42035f;
+  fill: white;
 }
 .redes-sociais{
   display: flex;
@@ -144,7 +141,7 @@ footer svg path{
   
 }
 
-.fundo {
+.fundo_ {
   width: 100vw;
   height: 100px;
   background-image: url('/public/assets//back.jpg');
