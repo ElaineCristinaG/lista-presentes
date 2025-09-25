@@ -29,6 +29,7 @@ const lista = document.getElementById("list");
 const template = document.getElementById("item-template");
 const btnSalvar = document.getElementById("add-button");
 const inputNome = document.getElementById("pessoa"); 
+const copiarLink = document.getElementById('copiarLink');
 let presenteSelecionadoId = null;
 
 // 🔹 Monitora mudanças na lista de presentes
@@ -137,6 +138,23 @@ function goPix(){
 
 areaPix.addEventListener("click",goPix);
 
+copiarLink.addEventListener('click', () => {
+  navigator.clipboard.writeText(qrcode.textContent)
+    .then(() => {
+      // Muda o ícone para indicar "copiado"
+      icone.src = '/public/assets/content-check.svg'; // ícone de check
+      icone.classList.add('copiado');
+
+      // Volta ao ícone original após 2 segundos
+      setTimeout(() => {
+        icone.src = '/public/assets/content-copy.svg';
+        icone.classList.remove('copiado');
+      }, 2000);
+    })
+    .catch(err => {
+      console.error('Erro ao copiar:', err);
+    });
+});
 
 
 document.getElementById("reset-button").addEventListener("click", resetarPresentes);

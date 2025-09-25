@@ -126,7 +126,23 @@ footer{
 
 footer svg path{
   fill: white;
+} 
+#iconeCopiar svg path{
+fill:rgb(38, 101, 173);
 }
+
+#iconeCopiar {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+#iconeCopiar.copiado {
+  transform: scale(1.2);
+}
+
 .redes-sociais{
   display: flex;
   gap: 20px;
