@@ -27,12 +27,9 @@ ul#list li:nth-child(even) {
 
 input#pessoa {
   padding: 10px;
-  width: 200px;
-  border: 0.5px solid rgb(86, 86, 252);
+  width: 200px; 
   border-radius: 8px;
-  font-size: 16px;
-
-  
+  font-size: 16px;  
 }
 .btn {
   color: white;
@@ -40,14 +37,15 @@ input#pessoa {
   border-radius: 5px;
   cursor: pointer;
   font-size: 14px;
-  width: 70px;
+  width: 100px;
   padding: 8px;
 }
 .pix{
-  background-color: #42035f;
+  color: rgb(2, 2, 78);
+  background-color: #f6f4f7;
 }
 .salvar{
-  background-color: rgb(75, 75, 235);
+  background-color: rgb(2, 2, 78);
 }
 h3,h1,p{
 font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -55,8 +53,9 @@ font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
 }
 
-h3 {
-  color:rgb(86, 86, 252);
+h1 {
+  color:rgb(239, 239, 243);
+  /* color:rgb(2, 2, 78); */
   font-optical-sizing: auto;
   font-weight: 700;
   font-style: normal;
@@ -72,29 +71,22 @@ span{
 
 header{
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 10px;
+  flex-direction: column;
+  justify-content: space-around;
   width: 100vw;
-  height: 70px;
-  padding: 10px 0;
-  align-items: center;
-  background-color: rgba(226, 201, 238, 0.993);
+  height: 100px;
   position: fixed;
   top: 0;
+  
 }
 .input-container{
- position: fixed;
- top: 90px;
- width: 100vw;
- height: 50px;
+
+ width: 100vw; 
  display: flex;
  justify-content: center;
  align-items: center;
  flex-direction: row;
  gap: 10px;
- padding: 20px 10px;
- background-color: rgb(252, 249, 249);
 
 }
 .lista{
@@ -104,8 +96,7 @@ header{
   
 }
 .areaPix{
-  padding: 300px  0;
-  
+  padding: 300px  0;  
   width: 100vw; 
   height: auto; 
   display: flex;
@@ -116,7 +107,7 @@ header{
 }
 
 footer{
-  background-color:rgba(226, 201, 238, 0.993);
+  background-color:rgba(189, 218, 252, 0.61);
   width: 100vw;
   height: 70px;
   text-align: center;   
@@ -147,8 +138,20 @@ footer svg path{
 .campo{
   padding: 10px;
   width: 90vw;
-  border: 0.5px solid rgb(86, 86, 252);
+  border: none;
   border-radius: 8px;
   font-size: 16px;
   
 }
+
+.fundo {
+  width: 100vw;
+  height: 100px;
+  background-image: url('/public/assets/flor3.jpg');
+  background-size: cover;      /* cobre todo o elemento */
+  background-position: center; /* centraliza a imagem */
+   
+  
+  /* background-repeat: no-repeat;não repete a imagem */
+}
+
