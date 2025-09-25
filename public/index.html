@@ -8,26 +8,25 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Cursive:wght@400..700&display=swap" rel="stylesheet">
   <link rel="shortcut icon" href="/public/assets/favicon.png">
-  <title>Leticia Pérola & Rhony</title>
+  <title>Presentes</title>
 </head>
 
 <body>
   <header>
-    <h3> 🎁 Lista de Presentes </h3> 
+    <h3> 🎁 Lista de Presentes </h3>  
   </header>
 
 <main>
-  
+  <div class="input-container">
+    <input type="text" id="pessoa"  class="campo" placeholder="Digite seu nome*"> 
+    <button id="save" class="btn salvar" type="button">SALVAR</button>
+    <a href="#areaPix""><button id="pix" class="btn pix" type="button">PIX</button></a>
+    <a href="#areaPix" class="btn botao">PIX</a>
+  </div>
 
   <section class="container">
-   
-    <div style="display: flex; gap: 15px;">
-      <input type="text" id="pessoa" placeholder="Seu nome aqui ..."> 
-      <button id="add-button" type="button">Salvar</button>
-    </div>
-
       
-    <div>
+    <div class="lista">
       <ul id="list"></ul>
     </div> 
 
@@ -37,22 +36,29 @@
         <span class="nome"></span>
       </li>
     </template>
+
   </section>
 
-<section>
+  <section id="areaPix" class="areaPix" >
+    <p>Chave Pix</p>
 
-  <li class="item">
-    <span class="nome"></span>
-    <span class="pessoa"></span>
-  </li>
-</section>
+    <a href=""><h3>16994212489</h3></a> 
+    <button id="copyPix">Copie a chave
+      
+       
+   
+    </button>
+    <img src="/public/assets/qrcode-pix.png" alt="qrcode" style="width: 300px;height: auto;">
+
+
+  </section>
 
 </main> 
 
 
 <footer>
   <span>Desenvolvido por Fly Code Developer </span>
-<div class="redes-sociais">
+  <div class="redes-sociais"> 
 
   <a href="https://www.instagram.com/fly.code.1?igsh=djJhenZkaGxudmYx" target="_blank">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="width: 24px;height: 24px;"><title>instagram</title>
@@ -67,10 +73,8 @@
     </svg>
   </a>
 
-</div>
-
-  <button id="reset-button">Resetar</button> 
-  
+  </div>
+  <!-- <button id="reset-button">Resetar</button>    -->
 </footer> 
  
   <!-- Firebase SDK -->

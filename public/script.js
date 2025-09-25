@@ -110,7 +110,7 @@ async function salvarPresente() {
 }
 
 // 🔹 Evento do botão salvar
-btnSalvar.addEventListener("click", salvarPresente);
+save.addEventListener("click", salvarPresente);
 
 
 // 🔹 Função para resetar todos os presentes
@@ -125,6 +125,17 @@ async function resetarPresentes() {
     console.error("Erro ao resetar presentes:", error);
   }
 }
+
+function goPix(){
+  const elemento = document.getElementById(areaPix);
+  if(elemento){
+    elemento.scrollIntoView({
+      behavior: 'smooth'
+    })
+  }
+}
+
+areaPix.addEventListener("click",goPix);
 
 
 
