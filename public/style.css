@@ -8,13 +8,15 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 100px;
+  margin-top: 180px;
 }
-
+.lista{
+  max-height: calc(100vh-210);
+  overflow-y: auto;  
+}
 ul#list {
   list-style: none;
   padding: 0;
-  
 }
 
 ul#list li {
@@ -32,7 +34,8 @@ input#pessoa {
   font-size: 16px;  
 }
 .btn {
-  color: white;
+  background-color: rgb(255, 255, 255);
+  color: rgb(38, 101, 173);
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -41,48 +44,55 @@ input#pessoa {
   padding: 8px;
 }
 .pix{
-  color: rgb(2, 2, 78);
-  background-color: #f6f4f7;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 10px 20px 0px;  
+  color: rgb(38, 101, 173);
+  background-color: rgb(255, 255, 255);
+  font-weight: 600;
+  font-size: 1rem;
 }
-.salvar{
-  background-color: rgb(2, 2, 78);
+#iconeCopiar {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  cursor: pointer;
+  transition: transform 0.2s;
 }
+
+/* comum para todos os textos */
 h3,h1,p{
-font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-optical-sizing: auto;
   margin: 0;
 }
-
+/* titulo */
 h1 {
-  color:rgb(239, 239, 243);
-  /* color:rgb(2, 2, 78);  */
-  font-optical-sizing: auto;
+  color:rgb(239, 239, 243);  
   font-weight: 700;
   font-style: normal;
   text-align: center;
 }
-
+/* roda pé */
 .textFooter{
   font-size: 20px;
   color: white;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 15px;
 }
-
-
+/* container do header */
 header{
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   width: 100vw;
-  height: 100px;
+  height: 150px;
   position: fixed;
   top: 0;
   background-color:rgb(38, 101, 173);
-  
 }
-.input-container{
-
+.input{
  width: 100vw; 
  display: flex;
  justify-content: center;
@@ -95,17 +105,8 @@ header{
   width: 100vw;
   display: flex;
   justify-content: center;
-  
-}
-.areaPix{
-  padding: 300px  0;  
-  width: 100vw; 
-  height: auto; 
-  display: flex;
-  flex-direction: column;
-  justify-content: center; 
-  align-items: center;
-  gap: 15px;
+  color: rgb(38, 101, 173);
+  font-family: Arial, Helvetica, sans-serif; 
 }
 
 footer{
@@ -126,18 +127,8 @@ footer{
 
 footer svg path{
   fill: white;
-} 
-#iconeCopiar svg path{
-fill:rgb(38, 101, 173);
 }
 
-#iconeCopiar {
-  width: 20px;
-  height: 20px;
-  vertical-align: middle;
-  cursor: pointer;
-  transition: transform 0.2s;
-}
 
 #iconeCopiar.copiado {
   transform: scale(1.2);
@@ -153,18 +144,5 @@ fill:rgb(38, 101, 173);
   width: 90vw;
   border: none;
   border-radius: 8px;
-  font-size: 16px;
-  
+  font-size: 16px;  
 }
-
-.fundo_ {
-  width: 100vw;
-  height: 100px;
-  background-image: url('/public/assets//back.jpg');
-  background-size: cover;      /* cobre todo o elemento */
-  background-position: center; /* centraliza a imagem */
-   
-  
-  /* background-repeat: no-repeat;não repete a imagem */
-}
-

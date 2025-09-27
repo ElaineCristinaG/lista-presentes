@@ -51,7 +51,7 @@ onValue(listaRef, snapshot => {
     checkbox.disabled = false;
 
     // Aplica estilos
-    li.querySelector('.nome').style.color = "#0754e4ff";
+    // li.querySelector('.nome').style.color = "#0754e4ff";
    
 
   checkbox.addEventListener("change", () => {
@@ -81,7 +81,7 @@ onValue(listaRef, snapshot => {
 
 // 🔹 Função para salvar presente selecionado
 async function salvarPresente() {
-  console.log("pessoa:", inputNome.value);
+  
   const nomee = inputNome.value.trim();
 
   if (!nomee) {
@@ -126,36 +126,6 @@ async function resetarPresentes() {
     console.error("Erro ao resetar presentes:", error);
   }
 }
-
-function goPix(){
-  const elemento = document.getElementById(areaPix);
-  if(elemento){
-    elemento.scrollIntoView({
-      behavior: 'smooth'
-    })
-  }
-}
-
-areaPix.addEventListener("click",goPix);
-
-copiarLink.addEventListener('click', () => {
-  navigator.clipboard.writeText(qrcode.textContent)
-    .then(() => {
-      // Muda o ícone para indicar "copiado"
-      icone.src = '/public/assets/content-check.svg'; // ícone de check
-      icone.classList.add('copiado');
-
-      // Volta ao ícone original após 2 segundos
-      setTimeout(() => {
-        icone.src = '/public/assets/content-copy.svg';
-        icone.classList.remove('copiado');
-      }, 2000);
-    })
-    .catch(err => {
-      console.error('Erro ao copiar:', err);
-    });
-});
-
 
 document.getElementById("reset-button").addEventListener("click", resetarPresentes);
 

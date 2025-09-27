@@ -10,25 +10,28 @@
   <link rel="shortcut icon" href="/public/assets/favicon.png">
   <title>Presentes</title>
 </head>
-
-
   
 
 <body>
   <header class="fundo">
     <div style=" height: 100%; display: flex;flex-direction: column;justify-content: space-around;text-align: center;">
 
-    <h1> Lista de Presentes </h1>  
-    <div class="input-container">
-      <input type="text" id="pessoa"  class="campo" placeholder="Digite seu nome*"> 
-      <button id="save" class="btn salvar" type="button">SALVAR</button>
-      <a href="#areaPix""><button id="pix" class="btn pix" type="button">PIX</button></a>   
+      <h1> Lista de Presentes </h1>  
+      <div class="input">
+        <input type="text" id="pessoa"  class="campo" placeholder="Digite seu nome*"> 
+        <button id="save" class="btn" type="button"> <span>SALVAR</span></button>
+      </div>
     </div>
-  </div>
+    <div class="pix">
+      <p>Caso queira contribuir via PIX:</p>
+      <a id="copiarLink">
+       <span>16994212489</span> 
+       <img src="/public/assets/content-copy.svg" id="iconeCopiar" alt="icone copiar">
+      </a> 
+    </div>
   </header>
 
 <main >
-  
 
   <section class="container">
       
@@ -45,21 +48,11 @@
 
   </section>
 
-  <section id="areaPix" class="areaPix" >
-    <p>Chave Pix</p>
-
-    <a href="javascript:void(0);" id="copiarLink"><span>16994212489</span>
-    <img src="/public/assets/content-copy.svg" id="iconeCopiar" alt="icone copiar">
-    </a> 
-   
-      
-       
-   
+  <!-- <section id="areaPix" class="areaPix" >
+    <p>Chave Pix</p>   
     </button>
-    <img src="/public/assets/qrcode-pix.png" alt="qrcode" style="width: 300px;height: auto;">
-
-
-  </section>
+     <img src="/public/assets/qrcode-pix.png" alt="qrcode" style="width: 300px;height: auto;"> 
+  </section> -->
 
 </main> 
 
