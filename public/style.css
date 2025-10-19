@@ -12,7 +12,7 @@
   overflow: hidden;
 }
 .lista{
-  max-height: calc(100vh-210);
+  max-height: calc(100vh-310);
   overflow-y: auto;  
 }
 ul#list {
