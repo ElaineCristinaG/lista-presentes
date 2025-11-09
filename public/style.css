@@ -2,6 +2,12 @@
 *{
   margin: 0;
 }
+.body{
+  overflow-y: hidden;
+}
+.main{
+  overflow-y: hidden;
+}
 .container{
   width: 100vw;
   display: flex;
@@ -9,16 +15,16 @@
   justify-content: center;
   align-items: center;
   margin-top: 180px;
-  overflow: hidden;
-  backgroud: yellow;
 }
 .lista{
-  max-height: calc(100vh-310);
-  overflow-y: auto;  
+  max-height: calc(100vh-210);
+  padding-bottom: 100px;
+   
 }
 ul#list {
   list-style: none;
   padding: 0;
+  overflow-y: auto;
 }
 
 ul#list li {
@@ -35,6 +41,7 @@ input#pessoa {
   border-radius: 8px;
   font-size: 16px;  
 }
+
 .btn {
   background-color: rgb(255, 255, 255);
   color: rgb(38, 101, 173);
@@ -45,16 +52,19 @@ input#pessoa {
   width: 100px;
   padding: 8px;
 }
+
 .pix{
   display: flex;
-  justify-content: center;
-  gap: 20px;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
   padding: 10px 20px 0px;  
   color: rgb(38, 101, 173);
   background-color: rgb(255, 255, 255);
   font-weight: 600;
   font-size: 1rem;
 }
+
 #iconeCopiar {
   width: 20px;
   height: 20px;
@@ -94,6 +104,7 @@ header{
   top: 0;
   background-color:rgb(38, 101, 173);
 }
+
 .input{
  width: 100vw; 
  display: flex;
@@ -103,6 +114,7 @@ header{
  gap: 10px;
 
 }
+
 .lista{
   width: 100vw;
   display: flex;
@@ -131,14 +143,15 @@ footer svg path{
   fill: white;
 }
 
-
 #iconeCopiar.copiado {
   transform: scale(1.2);
 }
 
 .redes-sociais{
   display: flex;
-  gap: 20px;
+  width: 200px;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .campo{
@@ -147,4 +160,49 @@ footer svg path{
   border: none;
   border-radius: 8px;
   font-size: 16px;  
+}
+
+ .item-presente {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+}
+
+.center{
+  display: flex;
+  justify-content: flex-start;
+  width: 60%;
+  padding: 10px;
+  margin-bottom: 5px ;
+  border-radius: 8px;
+  background:rgb(162, 195, 233);
+}
+
+.span-adm{
+  color:rgb(38, 101, 173);
+}
+
+.adm-icon {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.adm-icon svg {
+  width: 24px;
+  height: 24px;
+  fill: #fff; /* cor do ícone */
+  transition: transform 0.2s ease;
+}
+
+.adm-icon:hover svg {
+  transform: scale(1.2);
+
+ 
 }

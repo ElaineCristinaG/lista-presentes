@@ -23,14 +23,16 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
 // Referência da lista de presentes
-const listaRef = ref(db, "presentes");
+const listaRef = ref(db, "presentes");const senhaCorreta = 1984;
 
 const lista = document.getElementById("list");
 const template = document.getElementById("item-template");
-const btnSalvar = document.getElementById("add-button");
 const inputNome = document.getElementById("pessoa"); 
-const copiarLink = document.getElementById('copiarLink');
+const reset = document.getElementById('reset-button');
+const adm = document.getElementById("adm-button");
+const adminListContainer = document.getElementById("admin-list");
 let presenteSelecionadoId = null;
+
 
 // 🔹 Monitora mudanças na lista de presentes
 onValue(listaRef, snapshot => {
@@ -49,10 +51,6 @@ onValue(listaRef, snapshot => {
     const checkbox = li.querySelector('.checkbox');
     checkbox.checked = false;
     checkbox.disabled = false;
-
-    // Aplica estilos
-    // li.querySelector('.nome').style.color = "#0754e4ff";
-   
 
   checkbox.addEventListener("change", () => {
   // Desmarca qualquer outro checkbox selecionado
@@ -77,7 +75,6 @@ onValue(listaRef, snapshot => {
     lista.appendChild(li);
   });
 });
-
 
 // 🔹 Função para salvar presente selecionado
 async function salvarPresente() {
@@ -110,10 +107,6 @@ async function salvarPresente() {
   }
 }
 
-// 🔹 Evento do botão salvar
-save.addEventListener("click", salvarPresente);
-
-
 // 🔹 Função para resetar todos os presentes
 async function resetarPresentes() {
   try {
@@ -127,7 +120,54 @@ async function resetarPresentes() {
   }
 }
 
-document.getElementById("reset-button").addEventListener("click", resetarPresentes);
+
+ function loock(){
+ const valor = prompt("Senha:");
+ if (valor === null) return; 
+ if (Number(valor) === senhaCorreta) {
+ mostrarListaAdmin();
+ } else {
+  alert("Senha incorreta ❌");
+}
+
+}
+
+ // Função que monta a lista de presentes
+async function mostrarListaAdmin() {
+
+  onValue(listaRef, (snapshot) => {
+    
+
+    snapshot.forEach((childSnap) => {
+      const item = childSnap.val();
+
+      // Cria o item da lista
+      const div = document.createElement("div");
+      
+
+      if(item.escolhido){
+        div.classList.add("item-presente");
+        const nomePresente = item.nome ;
+        const pessoa = item.pessoa ;
+        div.innerHTML = `
+        <div class="center"><span class="span-adm">${nomePresente}: ${pessoa} </span>
+     </div>
+        
+      `;
+      }
+      adminListContainer.appendChild(div);
+    });
+  });
+
+  // Exibe o container
+  adminListContainer.style.display = "block";
+  
+}
+save.addEventListener("click", salvarPresente);
+adm.addEventListener("click",  loock)
+reset.addEventListener("click", resetarPresentes);
+
+
 
 
 
