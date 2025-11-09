@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "lista-de-itens-f4a54",
     "public": "public",
     "ignore": [
       "firebase.json",
