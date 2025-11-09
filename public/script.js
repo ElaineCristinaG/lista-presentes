@@ -136,19 +136,18 @@ async function resetarPresentes() {
 async function mostrarListaAdmin() {
 
   onValue(listaRef, (snapshot) => {
-    
 
     snapshot.forEach((childSnap) => {
       const item = childSnap.val();
 
       // Cria o item da lista
       const div = document.createElement("div");
-      
+      div.classList.add("item-presente");
 
       if(item.escolhido){
-        div.classList.add("item-presente");
         const nomePresente = item.nome ;
         const pessoa = item.pessoa ;
+       
         div.innerHTML = `
         <div class="center"><span class="span-adm">${nomePresente}: ${pessoa} </span>
      </div>
