@@ -10,21 +10,21 @@
 }
 .container{
   width: 100vw;
-  height: 300px;
+   max-height: calc(100vh);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 170px;
-  padding-bottom: 10px;
-  overflow-y: auto;
-
-
+  margin-top: 150px;
 }
+
 .lista{
-  max-height: calc(100vh-210);
-  padding-bottom: 10px;
-   
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  color: rgb(38, 101, 173);
+  font-family: Arial, Helvetica, sans-serif; 
+  overflow-y: auto;
 }
 ul#list {
   list-style: none;
@@ -56,8 +56,17 @@ input#pessoa {
   width: 100px;
   padding: 8px;
 }
+.header-title{
+  height: 100%; 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: space-around; 
+  text-align: center;
+  background-color: rgb(38, 101, 173);
 
-.pix{
+}
+
+.header-pix{
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -67,14 +76,6 @@ input#pessoa {
   background-color: rgb(255, 255, 255);
   font-weight: 600;
   font-size: 1rem;
-}
-
-#iconeCopiar {
-  width: 20px;
-  height: 20px;
-  vertical-align: middle;
-  cursor: pointer;
-  transition: transform 0.2s;
 }
 
 /* comum para todos os textos */
@@ -97,7 +98,7 @@ h1 {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 15px;
 }
-/* container do header */
+
 header{
   display: flex;
   flex-direction: column;
@@ -106,7 +107,6 @@ header{
   height: 150px;
   position: fixed;
   top: 0;
-  background-color:rgb(38, 101, 173);
 }
 
 .input{
@@ -119,13 +119,6 @@ header{
 
 }
 
-.lista{
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  color: rgb(38, 101, 173);
-  font-family: Arial, Helvetica, sans-serif; 
-}
 
 footer{
   background-color:rgb(38, 101, 173);
@@ -172,7 +165,6 @@ footer svg path{
   width: 100%;
   display: flex;
   justify-content: center;
- 
 
 }
 
